@@ -16,8 +16,11 @@ def calculate(expression:str):
 
 
 def get_weather(city: str):
-      url=f"https://wttr.in/{city}?format=3"
-      response= requests.get(url,timeout=5)
-      return response.text
+    try:
+        url = f"https://wttr.in/{city}?format=3"
+        response = requests.get(url, timeout=5)
+        return response.text
+    except Exception as e:
+        return f"Weather fetch failed: {e}"
 
 
